@@ -1,6 +1,6 @@
 module Fastlane
   module Actions
-    class StoreSizerAction < Action
+    class StoreSizeXcarchiveAction < Action
       def self.run(params)
         require 'plist'
 
@@ -46,6 +46,9 @@ module Fastlane
 
       def self.authors
         ["Marcelo Oliveira"]
+      end
+
+      def self.output
       end
 
       def self.return_value
