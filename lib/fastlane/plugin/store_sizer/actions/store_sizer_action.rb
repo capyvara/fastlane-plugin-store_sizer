@@ -9,10 +9,11 @@ module Fastlane
         binary_name = File.basename(app_path, ".app")
         binary_path = File.join(app_path, binary_name)
         extra_file_path = File.join(app_path, "extradata_simulated")
+        result = {}
 
-        Dir.mktmpdir do |tmp_dir|
-          binary_backup_path = File.join(tmp_dir, binary_name)
-          export_dir = File.join(tmp_dir, "Export")
+        Dir.mktmpdir do |tmp_path|
+          binary_backup_path = File.join(tmp_path, binary_name)
+          export_path = File.join(tmp_path, "Export")
           begin
             FileUtils.mv(binary_path, binary_backup_path)
             FileUtils.cp(binary_backup_path, binary_path)
@@ -22,17 +23,21 @@ module Fastlane
             export_options = {}
             export_options[:method] = 'ad-hoc'
             export_options[:thinning] = '<thin-for-all-variants>'
-            export_options_plist_path = File.join(tmp_dir, "ExportOptions.plist")
+            export_options_plist_path = File.join(tmp_path, "ExportOptions.plist")
             File.write(export_options_plist_path, Plist::Emit.dump(export_options, false))
 
             UI.message("Exporting all variants of #{archive_path} for estimation...")
-            Helper::StoreSizerHelper.xcode_export_package(archive_path, export_options_plist_path, export_dir)
+            Helper::StoreSizerHelper.xcode_export_package(archive_path, export_options_plist_path, export_path)
+
+            result = Plist.parse_xml(File.join(export_path, "app-thinning.plist"))
           ensure
             FileUtils.rm(binary_path)
             FileUtils.mv(binary_backup_path, binary_path)
             FileUtils.rm(extra_file_path)
           end
         end
+
+        result
       end
 
       def self.description
@@ -44,7 +49,7 @@ module Fastlane
       end
 
       def self.return_value
-        # If your method provides a return value, you can describe here what it does
+        "Hash containing app thinning report"
       end
 
       def self.details
@@ -65,7 +70,7 @@ module Fastlane
       end
 
       def self.is_supported?(platform)
-        [:ios, :mac, :android].include?(platform)
+        [:ios].include?(platform)
       end
     end
   end

@@ -15,12 +15,12 @@ module Fastlane
         IO.binwrite(path, SecureRandom.random_bytes(size))
       end
 
-      def self.xcode_export_package(archive_path, export_options_plist_path, export_dir)
+      def self.xcode_export_package(archive_path, export_options_plist_path, export_path)
         command = "xcodebuild"
         command << " -exportArchive"
         command << " -exportOptionsPlist #{export_options_plist_path}"
         command << " -archivePath #{archive_path}"
-        command << " -exportPath #{export_dir}"
+        command << " -exportPath #{export_path}"
         #FastlaneCore::CommandExecutor.execute(command: command, print_command: false, print_all: false)
         Fastlane::Actions.sh(command, log: false);
       end
