@@ -28,4 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'fastlane', '>= 2.40.0'
+  spec.add_development_dependency 'ruby-macho'
+  spec.add_development_dependency 'plist'  
 end
