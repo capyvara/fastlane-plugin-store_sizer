@@ -2,7 +2,7 @@ module Fastlane
   module Helper
     class StoreSizerHelper
       def self.write_random_encryption_segments(binary_path)
-        segments = estimated_encryption_segments(binary_path)
+        segments = encryption_segments(binary_path)
         File.open(binary_path, "rb+") do |file|
           segments.each do |segment|
             file.pos = segment[0]
@@ -28,22 +28,25 @@ module Fastlane
         return (offset + (align - 1)) - ((offset + (align - 1)) % align)
       end
 
-      def self.estimated_encryption_segments(binary_path)
+      def self.encryption_segments(binary_path)
         require 'macho'
 
         segments = []
+
         file = MachO.open(binary_path)
-        file.fat_archs.each_index do |arch_index|
-          fat_arch = file.fat_archs[arch_index]
-          macho = file.machos[arch_index]
-          macho.segments.each do |segment|
-            next unless segment.segname == "__TEXT"
-            start_offset = align_next(fat_arch.offset + segment.fileoff + macho.header.sizeofcmds, 1 << fat_arch.align)
-            end_offset = fat_arch.offset + segment.fileoff + segment.filesize
-            segments.push([start_offset, end_offset - start_offset])
+        if file.kind_of?(MachO::FatFile)
+          file.fat_archs.each_index do |arch_index|
+            segments.push(macho_encryption_segment(file.machos[arch_index], file.fat_archs[arch_index].offset))
           end
+        elsif file.kind_of?(MachO::MachOFile)
+          segments.push(macho_encryption_segment(file, 0))
         end
         return segments
+      end
+
+      def self.macho_encryption_segment(macho, file_offset)
+        encryption_info = (macho.magic32? ? macho[:LC_ENCRYPTION_INFO] : macho[:LC_ENCRYPTION_INFO_64]).first
+        return [file_offset + encryption_info.cryptoff, encryption_info.cryptsize]
       end
     end
   end

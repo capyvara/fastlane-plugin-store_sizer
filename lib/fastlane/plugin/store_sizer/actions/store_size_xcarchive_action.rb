@@ -37,9 +37,9 @@ module Fastlane
 
             result = Plist.parse_xml(File.join(export_path, "app-thinning.plist"))
           ensure
-            FileUtils.rm(binary_path)
+            FileUtils.rm_f(binary_path)
             FileUtils.mv(binary_backup_path, binary_path)
-            FileUtils.rm(extra_file_path)
+            FileUtils.rm_f(extra_file_path)
           end
         end
 
