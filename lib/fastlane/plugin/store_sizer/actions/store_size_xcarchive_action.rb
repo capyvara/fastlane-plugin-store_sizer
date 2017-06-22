@@ -71,7 +71,7 @@ module Fastlane
                                        description: 'Path to your xcarchive file. Optional if you use the `xcodebuild` action',
                                        default_value: Actions.lane_context[SharedValues::XCODEBUILD_ARCHIVE],
                                        optional: true,
-                                       env_name: 'ESTIMATE_APPSTORE_SIZES_ARCHIVE_PATH',
+                                       env_name: 'STORE_SIZE_ARCHIVE_PATH',
                                        verify_block: proc do |value|
                                          UI.user_error!("Couldn't find xcarchive file at path '#{value}'") if !Helper.test? && !File.exist?(value)
                                        end)
