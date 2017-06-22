@@ -58,11 +58,11 @@ module Fastlane
       end
 
       def self.return_value
-        "Hash containing app thinning report"
+        "Hash containing App Thinning report"
       end
 
       def self.details
-        "Estimates download and install sizes for your app"
+        "Compute estimated size of the .ipa after encryption and App Thinning for all variants"
       end
 
       def self.available_options
