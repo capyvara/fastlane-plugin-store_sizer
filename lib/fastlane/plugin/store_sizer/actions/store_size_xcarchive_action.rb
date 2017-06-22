@@ -9,7 +9,7 @@ module Fastlane
         end
 
         archive_path = params[:archive_path]
-        app_path = Dir.glob(File.join(archive_path, "Products", "Applications", "*.app")).first()
+        app_path = Dir.glob(File.join(archive_path, "Products", "Applications", "*.app")).first
         binary_name = File.basename(app_path, ".app")
         binary_path = File.join(app_path, binary_name)
         extra_file_path = File.join(app_path, "extradata_simulated")

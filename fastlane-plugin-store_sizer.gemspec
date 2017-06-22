@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fastlane/plugin/store_sizer/version'
@@ -6,11 +7,11 @@ require 'fastlane/plugin/store_sizer/version'
 Gem::Specification.new do |spec|
   spec.name          = 'fastlane-plugin-store_sizer'
   spec.version       = Fastlane::StoreSizer::VERSION
-  spec.author        = %q{Marcelo Oliveira}
-  spec.email         = %q{capyvara@gmail.com}
+  spec.author        = "Marcelo Oliveira"
+  spec.email         = "capyvara@gmail.com"
 
-  spec.summary       = %q{Estimates download and install sizes for your app}
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-store_sizer"
+  spec.summary       = "Estimates download and install sizes for your app"
+  spec.homepage      = "https://github.com/capyvara/fastlane-plugin-store_sizer"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
@@ -29,5 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'fastlane', '>= 2.40.0'
   spec.add_development_dependency 'ruby-macho'
-  spec.add_development_dependency 'plist'  
+  spec.add_development_dependency 'plist'
 end

@@ -24,8 +24,6 @@ module Fastlane
         FastlaneCore::CommandExecutor.execute(command: command, print_command: false, print_all: false)
       end
 
-      private
-
       def self.align_next(offset, align)
         return (offset + (align - 1)) - ((offset + (align - 1)) % align)
       end
@@ -40,12 +38,12 @@ module Fastlane
           macho = file.machos[arch_index]
           macho.segments.each do |segment|
             next unless segment.segname == "__TEXT"
-            start_offset = align_next(fat_arch.offset + segment.fileoff + macho.header.sizeofcmds, 1 << fat_arch.align);
-            end_offset = fat_arch.offset + segment.fileoff + segment.filesize;
+            start_offset = align_next(fat_arch.offset + segment.fileoff + macho.header.sizeofcmds, 1 << fat_arch.align)
+            end_offset = fat_arch.offset + segment.fileoff + segment.filesize
             segments.push([start_offset, end_offset - start_offset])
           end
         end
-        return segments;
+        return segments
       end
     end
   end
