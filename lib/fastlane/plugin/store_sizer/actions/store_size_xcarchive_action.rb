@@ -4,6 +4,10 @@ module Fastlane
       def self.run(params)
         require 'plist'
 
+        unless Fastlane::Helper.test?
+          UI.user_error!("xcodebuild not installed") if `which xcodebuild`.length == 0
+        end
+
         archive_path = params[:archive_path]
         app_path = Dir.glob(File.join(archive_path, "Products", "Applications", "*.app")).first()
         binary_name = File.basename(app_path, ".app")
@@ -28,6 +32,8 @@ module Fastlane
 
             UI.message("Exporting all variants of #{archive_path} for estimation...")
             Helper::StoreSizerHelper.xcode_export_package(archive_path, export_options_plist_path, export_path)
+
+            UI.verbose(File.read(File.join(export_path, "App Thinning Size Report.txt")))
 
             result = Plist.parse_xml(File.join(export_path, "app-thinning.plist"))
           ensure

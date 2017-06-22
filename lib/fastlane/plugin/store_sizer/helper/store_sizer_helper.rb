@@ -21,8 +21,7 @@ module Fastlane
         command << " -exportOptionsPlist #{export_options_plist_path}"
         command << " -archivePath #{archive_path}"
         command << " -exportPath #{export_path}"
-        #FastlaneCore::CommandExecutor.execute(command: command, print_command: false, print_all: false)
-        Fastlane::Actions.sh(command, log: false);
+        FastlaneCore::CommandExecutor.execute(command: command, print_command: false, print_all: false)
       end
 
       private
