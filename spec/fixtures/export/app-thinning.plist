@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>variants</key>
+	<dict>
+		<key>Apps/Example-iPad 2-etc.ipa</key>
+		<dict>
+			<key>limitUncompressedInitialPrefetchedODR</key>
+			<integer>2147483648</integer>
+			<key>onDemandResourcesAssetPacks</key>
+			<dict/>
+			<key>sizeCompressedApp</key>
+			<integer>2044171</integer>
+			<key>sizeCompressedAppAndODR</key>
+			<integer>2044171</integer>
+			<key>sizeCompressedODR</key>
+			<integer>0</integer>
+			<key>sizeUncompressedApp</key>
+			<integer>2093978</integer>
+			<key>sizeUncompressedAppAndODR</key>
+			<integer>2093978</integer>
+			<key>sizeUncompressedInitialPrefetchedODR</key>
+			<integer>0</integer>
+			<key>sizeUncompressedInitialPrefetchedODRExceedsLimit</key>
+			<false/>
+			<key>sizeUncompressedODR</key>
+			<integer>0</integer>
+			<key>tagsUncompressedInitialPrefetchedODR</key>
+			<array/>
+			<key>variantIds</key>
+			<array>
+				<string>iPad3,1</string>
+				<string>iPad3,3</string>
+				<string>iPad3,2</string>
+				<string>iPad3,4</string>
+				<string>iPad3,6</string>
+				<string>iPad3,5</string>
+				<string>iPad2,2</string>
+				<string>iPad2,4</string>
+				<string>iPad2,1</string>
+				<string>iPad2,3</string>
+				<string>iPad2,5</string>
+				<string>iPad2,7</string>
+				<string>iPad2,6</string>
+				<string>iPhone4,1</string>
+				<string>iPhone5,1</string>
+				<string>iPhone5,2</string>
+				<string>iPhone5,4</string>
+				<string>iPhone5,3</string>
+				<string>iPod5,1</string>
+			</array>
+			<key>variantNames</key>
+			<array>
+				<string>iPad (3rd generation)</string>
+				<string>iPad (3rd generation)</string>
+				<string>iPad (3rd generation)</string>
+				<string>iPad (4th generation)</string>
+				<string>iPad (4th generation)</string>
+				<string>iPad (4th generation)</string>
+				<string>iPad 2</string>
+				<string>iPad 2</string>
+				<string>iPad 2</string>
+				<string>iPad 2</string>
+				<string>iPad mini</string>
+				<string>iPad mini</string>
+				<string>iPad mini</string>
+				<string>iPhone 4S</string>
+				<string>iPhone 5</string>
+				<string>iPhone 5</string>
+				<string>iPhone 5c</string>
+				<string>iPhone 5c</string>
+				<string>iPod touch</string>
+			</array>
+		</dict>
+		<key>Apps/Example-iPhone 7 Plus-etc.ipa</key>
+		<dict>
+			<key>limitUncompressedInitialPrefetchedODR</key>
+			<integer>2147483648</integer>
+			<key>onDemandResourcesAssetPacks</key>
+			<dict/>
+			<key>sizeCompressedApp</key>
+			<integer>2044309</integer>
+			<key>sizeCompressedAppAndODR</key>
+			<integer>2044309</integer>
+			<key>sizeCompressedODR</key>
+			<integer>0</integer>
+			<key>sizeUncompressedApp</key>
+			<integer>2094428</integer>
+			<key>sizeUncompressedAppAndODR</key>
+			<integer>2094428</integer>
+			<key>sizeUncompressedInitialPrefetchedODR</key>
+			<integer>0</integer>
+			<key>sizeUncompressedInitialPrefetchedODRExceedsLimit</key>
+			<false/>
+			<key>sizeUncompressedODR</key>
+			<integer>0</integer>
+			<key>tagsUncompressedInitialPrefetchedODR</key>
+			<array/>
+			<key>variantIds</key>
+			<array>
+				<string>iPad6,11</string>
+				<string>iPad6,12</string>
+				<string>iPad4,1</string>
+				<string>iPad4,2</string>
+				<string>iPad4,3</string>
+				<string>iPad5,3</string>
+				<string>iPad5,4</string>
+				<string>iPad6,7</string>
+				<string>iPad6,8</string>
+				<string>iPad6,3</string>
+				<string>iPad6,4</string>
+				<string>iPad4,5</string>
+				<string>iPad4,6</string>
+				<string>iPad4,4</string>
+				<string>iPad4,7</string>
+				<string>iPad4,8</string>
+				<string>iPad4,9</string>
+				<string>iPad5,1</string>
+				<string>iPad5,2</string>
+				<string>iPhone6,2</string>
+				<string>iPhone6,1</string>
+				<string>iPhone7,2</string>
+				<string>iPhone7,1</string>
+				<string>iPhone8,1</string>
+				<string>iPhone8,2</string>
+				<string>iPhone9,3</string>
+				<string>iPhone9,1</string>
+				<string>iPhone9,2</string>
+				<string>iPhone9,4</string>
+				<string>iPhone8,4</string>
+				<string>iPod7,1</string>
+			</array>
+			<key>variantNames</key>
+			<array>
+				<string>iPad (5th generation)</string>
+				<string>iPad (5th generation)</string>
+				<string>iPad Air</string>
+				<string>iPad Air</string>
+				<string>iPad Air</string>
+				<string>iPad Air 2</string>
+				<string>iPad Air 2</string>
+				<string>iPad Pro (12.9-inch)</string>
+				<string>iPad Pro (12.9-inch)</string>
+				<string>iPad Pro (9.7-inch)</string>
+				<string>iPad Pro (9.7-inch)</string>
+				<string>iPad mini 2</string>
+				<string>iPad mini 2</string>
+				<string>iPad mini 2</string>
+				<string>iPad mini 3</string>
+				<string>iPad mini 3</string>
+				<string>iPad mini 3</string>
+				<string>iPad mini 4</string>
+				<string>iPad mini 4</string>
+				<string>iPhone 5s</string>
+				<string>iPhone 5s</string>
+				<string>iPhone 6</string>
+				<string>iPhone 6 Plus</string>
+				<string>iPhone 6s</string>
+				<string>iPhone 6s Plus</string>
+				<string>iPhone 7</string>
+				<string>iPhone 7</string>
+				<string>iPhone 7 Plus</string>
+				<string>iPhone 7 Plus</string>
+				<string>iPhone SE</string>
+				<string>iPod touch (6th generation)</string>
+			</array>
+		</dict>
+		<key>Apps/Example.ipa</key>
+		<dict>
+			<key>limitUncompressedInitialPrefetchedODR</key>
+			<integer>2147483648</integer>
+			<key>onDemandResourcesAssetPacks</key>
+			<dict/>
+			<key>sizeCompressedApp</key>
+			<integer>2067536</integer>
+			<key>sizeCompressedAppAndODR</key>
+			<integer>2067536</integer>
+			<key>sizeCompressedODR</key>
+			<integer>0</integer>
+			<key>sizeUncompressedApp</key>
+			<integer>2174294</integer>
+			<key>sizeUncompressedAppAndODR</key>
+			<integer>2174294</integer>
+			<key>sizeUncompressedInitialPrefetchedODR</key>
+			<integer>0</integer>
+			<key>sizeUncompressedInitialPrefetchedODRExceedsLimit</key>
+			<false/>
+			<key>sizeUncompressedODR</key>
+			<integer>0</integer>
+			<key>tagsUncompressedInitialPrefetchedODR</key>
+			<array/>
+		</dict>
+	</dict>
+</dict>
+</plist>

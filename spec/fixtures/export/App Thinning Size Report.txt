@@ -1,0 +1,22 @@
+
+App Thinning Size Report for All Variants of Example
+
+Variant: Example-iPad 2-etc.ipa
+Supported devices: iPad (3rd generation), iPad (4th generation), iPad 2, iPad mini, iPhone 4S, iPhone 5, iPhone 5c, and iPod touch
+App + On Demand Resources size: 2 MB compressed, 2,1 MB uncompressed
+App size: 2 MB compressed, 2,1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: Example-iPhone 7 Plus-etc.ipa
+Supported devices: iPad (5th generation), iPad Air, iPad Air 2, iPad Pro (12.9-inch), iPad Pro (9.7-inch), iPad mini 2, iPad mini 3, iPad mini 4, iPhone 5s, iPhone 6, iPhone 6 Plus, iPhone 6s, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPhone SE, and iPod touch (6th generation)
+App + On Demand Resources size: 2 MB compressed, 2,1 MB uncompressed
+App size: 2 MB compressed, 2,1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: Example.ipa
+Supported devices: Universal
+App + On Demand Resources size: 2,1 MB compressed, 2,2 MB uncompressed
+App size: 2,1 MB compressed, 2,2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
