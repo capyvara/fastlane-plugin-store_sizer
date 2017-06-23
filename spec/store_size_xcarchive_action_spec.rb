@@ -14,8 +14,8 @@ describe Fastlane::Actions::StoreSizeXcarchiveAction do
       require 'plist'
       allow(Fastlane::Helper::StoreSizerHelper).to receive(:xcode_export_package) do |archive_path, export_options_plist_path, export_path|
         expect(File.directory?(archive_path)).to be_truthy
-        expect(File.exists?(export_options_plist_path)).to be_truthy
-        
+        expect(File.exist?(export_options_plist_path)).to be_truthy
+
         export_options = Plist.parse_xml(export_options_plist_path)
         expect(export_options).to include("method" => 'ad-hoc', "thinning" => '<thin-for-all-variants>')
 
