@@ -46,9 +46,7 @@ module Fastlane
             UI.verbose(File.read(File.join(export_path, "App Thinning Size Report.txt")))
 
             result = Plist.parse_xml(File.join(export_path, "app-thinning.plist"))
-            result["min_os_version"] = macho_info.min_os_versions.first
-            result["text_segments_size"] = macho_info.text_segment_sizes.flatten.reduce(0, :+)
-            result["text_max_slice_size"] = macho_info.text_segment_sizes.max
+            result.merge!(macho_info.sizes_info)
           ensure
             FileUtils.rm_f(binary_path)
             FileUtils.mv(binary_backup_path, binary_path)

@@ -30,7 +30,8 @@ describe Fastlane::Actions::StoreSizeXcarchiveAction do
         archive_path = File.join(tmp_path, bin + ".xcarchive")
         make_fake_xcarchive(File.join(binpath, bin), archive_path)
         result = Fastlane::Actions::StoreSizeXcarchiveAction.run(archive_path: archive_path)
-        expect(result).to eq(expected_result)
+
+        expect(result["variants"]).to eq(expected_result["variants"])
       end
     end
   end

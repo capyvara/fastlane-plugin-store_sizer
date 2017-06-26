@@ -29,6 +29,14 @@ module Fastlane
         ].map { |s| s.to_i(2) }
       end
 
+      def sizes_info
+        result = {}
+        result["min_os_version"] = self.min_os_versions.first
+        result["text_segments_size"] = self.text_segment_sizes.flatten.reduce(0, :+)
+        result["text_max_slice_size"] = self.text_segment_sizes.flatten.max
+        result
+      end
+
       def macho_add(macho, file_offset)
         encryption_info = (macho.magic32? ? macho[:LC_ENCRYPTION_INFO] : macho[:LC_ENCRYPTION_INFO_64]).first
         self.encryption_segments.push([file_offset + encryption_info.cryptoff, encryption_info.cryptsize]) unless encryption_info.nil?
