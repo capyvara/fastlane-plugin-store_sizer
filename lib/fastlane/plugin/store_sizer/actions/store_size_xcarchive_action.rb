@@ -1,6 +1,13 @@
 module Fastlane
   module Actions
     class StoreSizeXcarchiveAction < Action
+      # TODO: Apple sizes reference goo.gl/6A3nQK
+      MAX_TEXT_7_LESS = 80_000_000
+      MAX_TEXT_7_TO_8 = 60_000_000
+      MAX_TEXT_9_PLUS = 500_000_000
+
+      EXTRA_FILE_SIZE = 2_000_000
+
       def self.run(params)
         require 'plist'
 
@@ -21,8 +28,11 @@ module Fastlane
           begin
             FileUtils.mv(binary_path, binary_backup_path)
             FileUtils.cp(binary_backup_path, binary_path)
-            Helper::StoreSizerHelper.write_random_encryption_segments(binary_path)
-            Helper::StoreSizerHelper.write_random_file(extra_file_path, 2 * 1000 * 1000)
+
+            macho_info = Helper::MachoInfo.new(binary_path)
+
+            Helper::StoreSizerHelper.write_random_segments(binary_path, macho_info.encryption_segments)
+            Helper::StoreSizerHelper.write_random_file(extra_file_path, EXTRA_FILE_SIZE)
 
             export_options = {}
             export_options[:method] = 'ad-hoc'
@@ -36,6 +46,9 @@ module Fastlane
             UI.verbose(File.read(File.join(export_path, "App Thinning Size Report.txt")))
 
             result = Plist.parse_xml(File.join(export_path, "app-thinning.plist"))
+            result["min_os_version"] = macho_info.min_os_versions.first
+            result["text_segments_size"] = macho_info.text_segment_sizes.flatten.reduce(0, :+)
+            result["text_max_slice_size"] = macho_info.text_segment_sizes.max
           ensure
             FileUtils.rm_f(binary_path)
             FileUtils.mv(binary_backup_path, binary_path)
