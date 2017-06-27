@@ -1,11 +1,10 @@
 module Fastlane
   module Actions
-    class StoreSizeXcarchiveAction < Action
-      # TODO: Apple sizes reference goo.gl/6A3nQK
-      MAX_TEXT_7_LESS = 80_000_000
-      MAX_TEXT_7_TO_8 = 60_000_000
-      MAX_TEXT_9_PLUS = 500_000_000
+    module SharedValues
+      SIZE_REPORT = :SIZE_REPORT
+    end
 
+    class StoreSizeXcarchiveAction < Action
       EXTRA_FILE_SIZE = 2_000_000
 
       def self.run(params)
@@ -17,6 +16,8 @@ module Fastlane
 
         archive_path = params[:archive_path]
         app_path = Dir.glob(File.join(archive_path, "Products", "Applications", "*.app")).first
+        UI.user_error!("No applications found in archive") if app_path.nil?
+
         binary_name = File.basename(app_path, ".app")
         binary_path = File.join(app_path, binary_name)
         extra_file_path = File.join(app_path, "extradata_simulated")
@@ -54,6 +55,7 @@ module Fastlane
           end
         end
 
+        Actions.lane_context[SharedValues::SIZE_REPORT] = result
         result
       end
 
@@ -66,6 +68,9 @@ module Fastlane
       end
 
       def self.output
+        [
+          ['SIZE_REPORT', 'The generated size report']
+        ]
       end
 
       def self.return_value
