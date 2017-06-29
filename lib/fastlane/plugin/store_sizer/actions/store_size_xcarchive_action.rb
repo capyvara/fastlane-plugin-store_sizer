@@ -14,7 +14,7 @@ module Fastlane
           UI.user_error!("xcodebuild not installed") if `which xcodebuild`.length == 0
         end
 
-        archive_path = params[:archive_path]
+        archive_path = params[:archive_path] || Actions.lane_context[SharedValues::XCODEBUILD_ARCHIVE]
         app_path = Dir.glob(File.join(archive_path, "Products", "Applications", "*.app")).first
         UI.user_error!("No applications found in archive") if app_path.nil?
 
@@ -69,7 +69,7 @@ module Fastlane
 
       def self.output
         [
-          ['SIZE_REPORT', 'The generated size report']
+          ['SIZE_REPORT', 'The generated size report hash']
         ]
       end
 

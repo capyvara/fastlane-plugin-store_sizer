@@ -25,13 +25,15 @@ module Fastlane
           error.call("__TEXT segments size #{text_size} greater than #{MAX_TEXT_9_PLUS}") if major_version >= 9 && text_size > MAX_TEXT_9_PLUS
         end
 
-        max_wifi_size = params[:max_wifi_size]
+        max_wifi_size = params[:max_wifi_size] || DEFAULT_MAX_WIFI_SIZE
 
-        report["variants"].each do |name, variant|
-          next if variant["variantIds"].nil? && params[:ignore_universal]
+        if max_wifi_size > 0 && !report["variants"].nil?
+          report["variants"].each do |name, variant|
+            next if variant["variantIds"].nil? && params[:ignore_universal]
 
-          size = variant["sizeUncompressedApp"]
-          error.call("Variant #{name} size #{size} greater than #{max_wifi_size}") if size > max_wifi_size
+            size = variant["sizeCompressedApp"]
+            error.call("Variant #{name} size #{size} greater than #{max_wifi_size}") if size > max_wifi_size
+          end
         end
 
         UI.test_failure!("Size check failed, #{errors} sizes exceeded the limits") if errors > 0
@@ -73,7 +75,7 @@ module Fastlane
                                        is_string: false,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :max_wifi_size,
-                                       description: 'Max WiFi download size',
+                                       description: 'Max Wi-Fi download size, pass 0 to ignore',
                                        default_value: DEFAULT_MAX_WIFI_SIZE,
                                        type: Integer,
                                        optional: true)
