@@ -1,4 +1,4 @@
 lane :test do |options|
   store_size_xcarchive(archive_path: options[:archive_path])
-  store_size_xcarchive_check(max_wifi_size: options[:max_wifi_size])
+  store_size_xcarchive_check
 end
