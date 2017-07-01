@@ -1,7 +1,8 @@
 # store_sizer plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-store_sizer)
-[![CircleCI](https://circleci.com/gh/capyvara/fastlane-plugin-store_sizer.svg?style=svg)](https://circleci.com/gh/capyvara/fastlane-plugin-store_sizer)
+[![Gem](https://img.shields.io/gem/v/fastlane-plugin-store_sizer.svg?style=flat)](https://rubygems.org/gems/fastlane-plugin-store_sizer)
+[![Build Status](https://img.shields.io/circleci/project/capyvara/fastlane-plugin-store_sizer/master.svg?style=flat)](https://circleci.com/gh/capyvara/fastlane-plugin-store_sizer)
 
 ## Getting Started
 
