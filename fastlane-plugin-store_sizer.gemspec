@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.author        = "Marcelo Oliveira"
   spec.email         = "capyvara@gmail.com"
 
-  spec.summary       = "Estimates download and install sizes for your app"
+  spec.summary       = "Estimates download and install sizes for your app, also checks if sizes fit the requirements"
   spec.homepage      = "https://github.com/capyvara/fastlane-plugin-store_sizer"
   spec.license       = "MIT"
 
@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
   # since this would cause a circular dependency
 
   # spec.add_dependency 'your-dependency', '~> 1.0.0'
+  spec.add_dependency 'ruby-macho'
+  spec.add_dependency 'plist'
 
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'bundler'
@@ -29,6 +31,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'fastlane', '>= 2.40.0'
-  spec.add_development_dependency 'ruby-macho'
-  spec.add_development_dependency 'plist'
 end
