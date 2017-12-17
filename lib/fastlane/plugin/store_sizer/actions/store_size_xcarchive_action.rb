@@ -36,8 +36,9 @@ module Fastlane
             Helper::StoreSizerHelper.write_random_file(extra_file_path, EXTRA_FILE_SIZE)
 
             export_options = {}
-            export_options[:method] = 'ad-hoc'
-            export_options[:thinning] = '<thin-for-all-variants>'
+            export_options['method'] = 'ad-hoc'
+            export_options.merge!(Plist.parse_xml(params[:export_plist])) if params[:export_plist]
+            export_options['thinning'] = params[:thinning]
             export_options_plist_path = File.join(tmp_path, "ExportOptions.plist")
             File.write(export_options_plist_path, Plist::Emit.dump(export_options, false))
 
@@ -90,7 +91,20 @@ module Fastlane
                                        env_name: 'STORE_SIZE_ARCHIVE_PATH',
                                        verify_block: proc do |value|
                                          UI.user_error!("Couldn't find xcarchive file at path '#{value}'") if !Helper.test? && !File.exist?(value)
-                                       end)
+                                       end),
+          FastlaneCore::ConfigItem.new(key: :export_plist,
+                                       description: 'Path to your existing export options plist with the codesigning stuff',
+                                       default_value: nil,
+                                       optional: true,
+                                       env_name: 'STORE_SIZE_EXPORT_OPTIONS_PLIST',
+                                       verify_block: proc do |value|
+                                         UI.user_error!("Couldn't find plist file at path '#{value}'") if !Helper.test? && !File.exist?(value)
+                                       end),
+          FastlaneCore::ConfigItem.new(key: :thinning,
+                                       description: 'How should Xcode thin the package? e.g. <none>, <thin-for-all-variants>, or a model identifier for a specific device (e.g. "iPhone7,1")',
+                                       default_value: '<thin-for-all-variants>',
+                                       optional: true,
+                                       env_name: 'STORE_SIZE_THINNING')
         ]
       end
 
@@ -100,3 +114,4 @@ module Fastlane
     end
   end
 end
+
