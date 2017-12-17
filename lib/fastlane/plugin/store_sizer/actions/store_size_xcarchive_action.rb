@@ -38,7 +38,7 @@ module Fastlane
             export_options = {}
             export_options['method'] = 'ad-hoc'
             export_options.merge!(Plist.parse_xml(params[:export_plist])) if params[:export_plist]
-            export_options['thinning'] = params[:thinning]
+            export_options['thinning'] = params[:thinning] || '<thin-for-all-variants>'
             export_options_plist_path = File.join(tmp_path, "ExportOptions.plist")
             File.write(export_options_plist_path, Plist::Emit.dump(export_options, false))
 
